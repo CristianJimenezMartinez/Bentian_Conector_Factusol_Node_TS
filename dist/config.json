@@ -1,0 +1,64 @@
+{
+    "env": "production",
+    "publicIP": "DNS_DOMINIO_HOSTING",
+    "frontendUrl": "DNS_DOMINIO_HOSTING",
+    "httpPort":3000,
+    "httpsPort":443,
+    "ssl": {
+      "enabled": true,
+      "domain": "DNS_DOMINIO_LOCAL",
+      "email": "CORREO_PARA_CERTIFICADO_EL_TUYO",
+      "certPath": "./src/certificates/cert.pem",
+      "keyPath": "./src/certificates/privkey.pem",
+      "caBundlePath": "./src/certificates/ca_bundle.pem"
+    },
+    "database": {
+      "host": "localhost",
+      "user": "USUARIO_POSTGRES",
+      "password": "CONTRASEÑA_POSTGRES",
+      "database": "NOMBRE_BBDD",
+      "port": 5432,
+      "user_factusol": "USUARIO_POSTGRES",
+      "password_factusol": "CONTRASEÑA_POSTGRES"
+    },
+    "file": {
+      "path_file_factusol": "ARCHIVO_FACTUSOL"
+    },
+    "ftp": {
+      "host": "RUTA_HOST_FTP",
+      "user": "USUARIO",
+      "password": "CONTRASEÑÁ",
+      "remotePath": "RUTA_HOSTING_PARA_FOTOS"
+    },
+    "stripe": {
+      "privateKey": "TU_CLAVE_DE_STRIPE",
+      "apiVersion": "VERSION_DE_LA_API",
+      "webhookSecret": "TU_CLAVE_DE_WEBHOOK"
+    },
+    "paypal": {
+      "clientId":     "YOUR_PAYPAL_CLIENT_ID_HERE",
+      "clientSecret": "YOUR_PAYPAL_CLIENT_SECRET_HERE",
+      "mode":         "sandbox"   
+    },
+    "paymentNotificationToken": "valorSecreto",
+    "smtp": {
+    "host": "CORREO_HOST",
+    "port": 465,
+    "user": "CORREO_QUE_ENVIA",
+    "password": "CONTRASEÑA_CORREO_QUE_ENVIA", 
+    "from": "CORREO_QUE_RECIVE"
+    },
+    "xsdExportFolder": "./xsd_exports",
+    "cors": {
+      "origin": "*",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "allowedHeaders": ["Content-Type", "Authorization"]
+    },
+    "ftpImgPath": "RUTA_DE_IMAGENES",
+    "company": {
+      "name": "NOMBRE_DE_LA_EMPRESA",
+      "address": "DIRECCION_DE_LA_EMPRESA",
+      "logoPath": "RUTA_DEL_LOGOTIPO"
+    }
+  }
+  
