@@ -1,106 +1,104 @@
-#Bentian Conector Factusol (Node TS, x64)
+# 🚀 Bentian Conector Factusol (Node TS, x64)
 
-Versión 64 bits (Beta) — totalmente funcional.
+[![Node.js](https://img.shields.io/badge/Node-20.0.0+-green)](https://nodejs.org/)
+[![License](https://img.shields.io/badge/License-PolyForm_NC-blue)](LICENSE)
 
-Descripción
+**Versión 64 bits (Beta)** — totalmente funcional.
+
+---
+
+## 📝 Descripción
 
 Este proyecto actúa como conector entre el software de facturación Factusol y sistemas externos, exponiendo:
 
-API REST y WebSockets para llamadas síncronas y en tiempo real.
+- **API REST** y **WebSockets** para llamadas síncronas y en tiempo real.
+- **Generación automática de facturas** desde la API.
+- Integración con **Stripe** y **PayPal** (modo prueba) para pasarelas de pago.
+- Notificaciones por **SMTP**, subida de archivos vía **FTP** y recepción de **Webhooks**.
+- **Autenticación**, manejo de errores y middleware personalizado.
 
-Generación automática de facturas desde la API.
+La capa de datos utiliza **PostgreSQL**, y la comunicación directa con Factusol (basada en 32 bits) se realiza a través de **OLE DB**.
 
-Integración con Stripe y PayPal (modo prueba) para pasarelas de pago.
+> 🚧 **Importante:** Esta versión es **64 bits** y requiere Microsoft Access Database Engine x64. Si Factusol está instalado en la misma máquina, no funcionará (Factusol usa OLE DB de 32 bits). Próximamente habrá una rama para coexistir con Factusol en la misma máquina.
 
-Notificaciones por SMTP, subida de archivos vía FTP y recepción de Webhooks.
+---
 
-Autenticación, manejo de errores y middleware personalizado.
+## 📋 Prerrequisitos
 
-La capa de datos utiliza PostgreSQL, y la comunicación directa con Factusol (basada en 32 bits) se realiza a través de OLE DB.
+- **Node.js** ≥ 20.0.0
+- **Microsoft Access Database Engine x64** (preferiblemente 2010 o 2016)
+- **PostgreSQL** instalado y configurado
+- **Puerto HTTP (80)** abierto (port forwarding o DMZ) para certificados Let’s Encrypt
+- Cuenta de **Stripe** y **PayPal** (modo prueba)
 
-🚧 Importante: Actualmente esta versión es 64 bits y requiere Microsoft Access Database Engine x64. Si Factusol está instalado en la misma máquina, no funcionará (Factusol usa OLE DB de 32 bits). Próximamente habrá una rama para coexistir con Factusol en la misma máquina.
+---
 
-📋 Prerrequisitos
+## 🔧 Instalación y configuración
 
-Node.js ≥ 20.0.0
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/CristianJimenezMartinez/Bentian_Conector_Factusol_Node_TS.git
+   cd Bentian_Conector_Factusol_Node_TS
+   ```
 
-Microsoft Access Database Engine x64 (preferiblemente 2010 o 2016)
+2. **Instala dependencias**:
+   ```bash
+   npm install
+   ```
 
-PostgreSQL instalado y configurado
+3. **Configura `config.json`**:
+   - Copia `config.example.json` → `config.json`.
+   - Completa tus credenciales:
+     ```json
+     {
+       "ssl": { ... },
+       "database": { ... },
+       "ftp": { ... },
+       "stripe": { ... },
+       "paypal": { ... },
+       "smtp": { ... }
+     }
+     ```
 
-Puerto HTTP (80) abierto (port forwarding o DMZ) para generar certificados Let’s Encrypt
+4. **Instala Access Database Engine x64** (2010 o 2016).
+5. **Creación de base de datos** en PostgreSQL y ejecución de scripts (si aplica).
+6. **Ejecución**:
+   ```bash
+   npm run build
+   npm start
+   ```
 
-Cuenta de Stripe y PayPal (modo prueba)
+> Al finalizar, encontrarás `bentian.exe` en `dist/`, listo para usarse.
 
-🔧 Instalación y configuración
+---
 
-Clona el repositorio:
+## 🔒 Certificados HTTPS
 
-git clone https://github.com/CristianJimenezMartinez/Bentian_Conector_Factusol_Node_TS.git
-cd Bentian_Conector_Factusol_Node_TS
+Para generar certificados Let’s Encrypt:
 
-Instala dependencias de Node:
+1. Abre el **puerto 80** en tu router/servidor.
+2. Define tu dominio en `config.json`.
+3. Ejecuta la aplicación: se generarán `cert.pem`, `privkey.pem` y `ca_bundle.pem` en `src/certificates`.
 
-npm install
+---
 
-Configura variables de entorno:
+## ⚙️ Uso y pruebas
 
-Copia config.example.json a config.json.
+1. Accede a la API (puerto 3000 o 443).
+2. Realiza peticiones REST (GET, POST, PUT, DELETE).
+3. Verifica la generación automática de facturas.
+4. En modo prueba de Stripe, configura Webhooks para:
+   - `payment_intent.payment_failed`
+   - `payment_intent.succeeded`
 
-Rellena las secciones con tus credenciales:
+---
 
-{
-  "ssl": { "enabled": true, ... },
-  "database": { "host": "...", "user": "...", "password": "..." },
-  "ftp": { "host": "...", "user": "...", "password": "..." },
-  "stripe": { "privateKey": "sk_test_...", "webhookSecret": "whsec_..." },
-  "paypal": { "clientId": "...", "clientSecret": "...", "mode": "sandbox" },
-  "smtp": { "host": "...", "user": "...", "password": "..." }
-}
+## 🛠 Próximos pasos
 
-Asegúrate de instalar Microsoft Access Database Engine x64:
+- Rama **`feature/32bit-support`** para compatibilidad con Factusol (32 bits).
+- Ejecutable autónomo (sin Node.js).
+- Tests automáticos y pipeline CI/CD.
 
-Descarga e instala la versión 2010 o 2016 desde Microsoft.
-
-Crea la base de datos en PostgreSQL y ejecuta los scripts de inicialización (si existen).
-
-Ejecuta la aplicación:
-
-npm run build
-npm start
-
-Al final del proceso encontrarás bentian.exe en la carpeta dist/, listo para usar.
-
-🌐 Certificados HTTPS
-
-Para obtener certificados válidos con Let's Encrypt, asegúrate de:
-
-Abrir el puerto 80 en tu router/servidor.
-
-Tener configurado el dominio en config.json.
-
-La primera ejecución generará y guardará cert.pem, privkey.pem y ca_bundle.pem.
-
-⚙️ Uso y pruebas
-
-Accede a la URL de la API (puerto 3000 o 443 según configuración).
-
-Haz peticiones REST (GET, POST, PUT, DELETE) a los endpoints de Factusol.
-
-Prueba el flujo de facturación automático.
-
-En modo prueba de Stripe, configura tus Webhooks con los eventos mínimos:
-
-payment_intent.payment_failed
-
-payment_intent.succeeded
-
-🚀 Próximos pasos
-
-Crear rama feature/32bit-support para permitir ejecución junto a Factusol (32 bits).
-
-Generar un ejecutable autónomo (sin dependencia de Node.js).
-
-Añadir tests automáticos y pipeline CI/CD.
+---
 
 © 2025 Cristian Jimenez Martinez — Hecho con 💙 y café
