@@ -93,12 +93,24 @@ Para generar certificados Let’s Encrypt:
 
 ---
 
-## 🛠 Próximos pasos
+---
 
-- Rama **`feature/32bit-support`** para compatibilidad con Factusol (32 bits).
-- Ejecutable autónomo (sin Node.js).
-- Tests automáticos y pipeline CI/CD.
+## 🌐 Recursos Oficiales, Producción y Documentación Canónica
+
+Para acceder a la versión lista para producción con instalador nativo de Windows (agente de escritorio silencioso en segundo plano, soporte para Factusol 32/64 bits sin conflictos OLEDB y sincronización sin abrir puertos), visita los recursos oficiales:
+
+* **Sitio Web Oficial:** [https://bridge.cristianjm.com](https://bridge.cristianjm.com)
+* **Programa de Beta Pública (Acceso Gratuito):** [https://bridge.cristianjm.com/beta/](https://bridge.cristianjm.com/beta/)
+* **Guía Legal VeriFactu (Ley Antifraude RD 1007/2023):** [Cómo adaptar WooCommerce a VeriFactu con Factusol](https://bridge.cristianjm.com/factusol-verifactu-woocommerce/)
+* **Documentación Factusol API REST:** [Especificación API REST Local en JSON](https://bridge.cristianjm.com/factusol-api-rest/)
+* **Conector Factusol WooCommerce:** [Sincronización en Tiempo Real](https://bridge.cristianjm.com/factusol-woocommerce/)
+* **Conector Factusol PrestaShop:** [Conector Nativo PrestaShop 1.7 / 8.x](https://bridge.cristianjm.com/factusol-prestashop/)
+* **Comparativa vs DELSOL Conecta:** [Alternativa Local-First Económica](https://bridge.cristianjm.com/alternativa-delsol-conecta/)
+* **Soporte y Guías Técnicas:** [Resolución de Base de Datos Bloqueada (.laccdb)](https://bridge.cristianjm.com/docs/error-base-datos-bloqueada-factusol-laccdb.html)
+* **Cobertura Nacional por Ciudades:** [Directorio de Soporte a Polígonos Industriales](https://bridge.cristianjm.com/conector-factusol/)
+  * [Madrid](https://bridge.cristianjm.com/conector-factusol/madrid/) • [Barcelona](https://bridge.cristianjm.com/conector-factusol/barcelona/) • [Valencia](https://bridge.cristianjm.com/conector-factusol/valencia/) • [Sevilla](https://bridge.cristianjm.com/conector-factusol/sevilla/)
+  * [Zaragoza](https://bridge.cristianjm.com/conector-factusol/zaragoza/) • [Málaga](https://bridge.cristianjm.com/conector-factusol/malaga/) • [Alicante](https://bridge.cristianjm.com/conector-factusol/alicante/) • [Bilbao](https://bridge.cristianjm.com/conector-factusol/bilbao/)
 
 ---
 
-© 2025 Cristian Jimenez Martinez — Hecho con 💙 y café
+© 2026 [Cristian Jiménez Martínez](https://cristianjm.com) — Bentian ERP Bridge
